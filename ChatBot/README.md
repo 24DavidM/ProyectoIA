@@ -1,1 +1,0 @@
-﻿# Proyecto de Fundamentos de Inteligencia Artificail 
