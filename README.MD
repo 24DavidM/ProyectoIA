@@ -84,3 +84,5 @@ Envía un JSON con los datos del paciente (variables clínicas y demográficas).
   "Gender": "Male",
   "Education_Level": "Tertiary",
   "Employment_Status":
+}
+```
