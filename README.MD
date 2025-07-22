@@ -12,7 +12,6 @@ El objetivo es predecir si un paciente tiene **hipertensión alta (High)** o baj
 ## 🧠 Entrenamiento y Mejora
 
 - Se entrenó un modelo de **Random Forest** con balanceo de clases usando **SMOTE** para mejorar la predicción frente a datos desbalanceados.  
-- Se optimizaron hiperparámetros como `n_estimators`, `max_depth`, `min_samples_split` y `min_samples_leaf` para aumentar la precisión.  
 - Se usaron técnicas de preprocesamiento como codificación one-hot (`get_dummies`) y alineación de columnas para manejar variables categóricas.  
 
 ---
