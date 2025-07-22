@@ -1,0 +1,3 @@
+project_name: ChatbotSalud
+language: es
+model_path: models/intent_classifier.pkl
