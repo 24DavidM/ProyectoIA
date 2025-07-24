@@ -1,0 +1,19 @@
+
+services:
+  backend:
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+
+  frontend:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    ports:
+      - "8501:8501"
+    depends_on:
+      - backend
