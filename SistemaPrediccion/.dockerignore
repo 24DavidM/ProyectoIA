@@ -1,4 +1,5 @@
 data/
+.ipynb
 notebook/
 models/
 *.pkl

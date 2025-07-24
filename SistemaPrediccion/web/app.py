@@ -2,6 +2,10 @@ import streamlit as st
 import requests
 import json
 import os
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import pandas as pd
 
 # Base directory es 'web'
 BASE_DIR = os.path.dirname(__file__)
@@ -115,9 +119,42 @@ elif menu == "Métricas":
         res = requests.get(url_metrics)
         data = res.json()
 
+        # Mostrar métricas básicas
         st.metric("Total de Predicciones", data.get("total_predictions", "N/A"))
         st.metric("Exactitud del Modelo", f'{data.get("accuracy", 0)*100:.2f}%')
-        st.write(f"Última actualización: {data.get('last_updated', 'N/A')}")
+
+        # Mostrar matriz de confusión
+        conf_matrix = np.array(data.get("confusion_matrix", [[0,0],[0,0]]))
+        fig, ax = plt.subplots()
+        sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', ax=ax)
+        ax.set_xlabel("Predicción")
+        ax.set_ylabel("Verdadero")
+        ax.set_title("Matriz de Confusión")
+        st.pyplot(fig)
+
+        # Mostrar reporte de clasificación en tabla
+        report = data.get("classification_report", {})
+        if report:
+            # Extraemos solo las clases 0 y 1 para la tabla
+            classes = ["0", "1"]
+            rows = []
+            for cls in classes:
+                cls_metrics = report.get(cls, {})
+                rows.append({
+                    "Clase": cls,
+                    "Precisión": cls_metrics.get("precision", 0),
+                    "Recall": cls_metrics.get("recall", 0),
+                    "F1-Score": cls_metrics.get("f1-score", 0),
+                    "Soporte": cls_metrics.get("support", 0),
+                })
+            df_report = pd.DataFrame(rows)
+            st.subheader("Reporte de Clasificación por Clase")
+            st.dataframe(df_report.style.format({
+                "Precisión": "{:.2f}",
+                "Recall": "{:.2f}",
+                "F1-Score": "{:.2f}",
+                "Soporte": "{:.0f}"
+            }))
 
     except Exception as e:
         st.error(f"No se pudieron cargar las métricas: {str(e)}")
