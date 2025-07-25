@@ -1,0 +1,32 @@
+# Evitar archivos de Python innecesarios
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Evitar entornos virtuales
+.venv/
+venv/
+env/
+
+# Evitar archivos de IDE
+.vscode/
+.idea/
+
+# Evitar control de versiones
+.git
+.gitignore
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Otros directorios del proyecto que no se necesitan en el contenedor
+../data/
+../notebooks/
+
+# Archivos de configuración locales
+.env

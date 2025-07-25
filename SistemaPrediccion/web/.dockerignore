@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.vscode/
+.idea/
+.git
+.gitignore
+.DS_Store
+Thumbs.db
+*.log
+models/         # si el frontend tiene modelos grandes
+.env
