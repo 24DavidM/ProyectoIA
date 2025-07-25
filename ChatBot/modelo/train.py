@@ -20,8 +20,11 @@ def train_model(data_path='datos/salud_dataset.csv'):
     model = {
         'vectorizer': vectorizer,
         'matrix': X,
+        'questions': data['question'].tolist(),
         'answers': data['answer'].tolist(),
-        'questions': data['question'].tolist()
+        'diseases': data['condition'].tolist(),
+        'preCare': data['cuidadosPrevios'].tolist(),
+        'generalRecommendations': data['recomendacionesGenerales'].tolist()
     }
 
     output_path = 'modelo/model.pkl'
@@ -32,6 +35,5 @@ def train_model(data_path='datos/salud_dataset.csv'):
     print("Modelo entrenado y guardado exitosamente.")
     return model
 
-# Ejecuta si se llama directamente
 if __name__ == '__main__':
     train_model()

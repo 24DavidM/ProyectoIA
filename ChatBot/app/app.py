@@ -3,11 +3,11 @@ import pickle
 from sklearn.metrics.pairwise import cosine_similarity
 
 # configuración de la página
-st.set_page_config(page_title="Chatbot Medicina", layout="centered")
+st.set_page_config(page_title="RoDoc", layout="centered")
 
 # titulo principal
-st.title("Un Chatbot de Atención Médica")
-st.write("Este chatbot te ofrece respuestas sobre salud. Sin embargo te recomandamos una consulta médica profesional.")
+st.title("¿Tienes dudas?")
+st.write("""RobDoc te ayuda!""")
 
 # cargar modelo entrenado
 try:
@@ -18,7 +18,7 @@ except FileNotFoundError:
     st.stop()
 
 # input del usuario
-input_usuario = st.text_input("Escribe tu pregunta: ")
+input_usuario = st.text_input("↓↓↓↓ Escribe tu pregunta ↓↓↓↓ ")
 
 # procesamiento
 if input_usuario:
