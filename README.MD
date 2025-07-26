@@ -82,6 +82,6 @@ Envía un JSON con los datos del paciente (variables clínicas y demográficas).
   "Glucose": 90,
   "Gender": "Male",
   "Education_Level": "Tertiary",
-  "Employment_Status":
+  "Employment_Status": "Employed"
 }
 ```
