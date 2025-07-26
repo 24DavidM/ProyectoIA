@@ -1,35 +1,32 @@
 import os
 import pandas as pd
 import pickle
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sentence_transformers import SentenceTransformer
 
-def train_model(data_path='datos/salud_dataset.csv'):
+def train_model(rutaDatos='datos/salud_datos.csv'):
     print("Ruta actual:", os.getcwd())
-    print("Verificando existencia del archivo:", data_path)
-    if not os.path.exists(data_path):
+    print("Verificando existencia del archivo:", rutaDatos)
+    if not os.path.exists(rutaDatos):
         print("El archivo no existe en esa ruta.")
         return
 
-    data = pd.read_csv(data_path)
+    data = pd.read_csv(rutaDatos, encoding='utf-8', quotechar='"')
     print("CSV cargado correctamente.")
     print("Columnas encontradas:", data.columns)
 
-    vectorizer = TfidfVectorizer()
-    X = vectorizer.fit_transform(data['question'])
+    model_embed = SentenceTransformer('all-MiniLM-L6-v2')
+    embeddings = model_embed.encode(data['question'].tolist(), convert_to_numpy=True)
 
     model = {
-        'vectorizer': vectorizer,
-        'matrix': X,
+        'embedding_model_name': 'all-MiniLM-L6-v2',
+        'matrix': embeddings,
         'questions': data['question'].tolist(),
         'answers': data['answer'].tolist(),
-        'diseases': data['condition'].tolist(),
-        'preCare': data['cuidadosPrevios'].tolist(),
-        'generalRecommendations': data['recomendacionesGenerales'].tolist()
     }
 
-    output_path = 'modelo/model.pkl'
-    print("Guardando modelo en:", output_path)
-    with open(output_path, 'wb') as f:
+    rutaGuardado = 'modelo/model.pkl'
+    print("Guardando modelo en:", rutaGuardado)
+    with open(rutaGuardado, 'wb') as f:
         pickle.dump(model, f)
 
     print("Modelo entrenado y guardado exitosamente.")
