@@ -2,6 +2,14 @@
 
 ---
 
+## 🖥️ Despliegue
+
+- **Backend:** 🚀 [https://stalind-static.hf.space/](https://stalind-static.hf.space/)  
+- **Frontend:** 🌐 [https://sistemaprediccionweb.streamlit.app/](https://sistemaprediccionweb.streamlit.app/)
+
+---
+
+
 ## 📊 Descripción
 
 Este proyecto es un sistema de **predicción de hipertensión** basado en un dataset obtenido de Kaggle.  
