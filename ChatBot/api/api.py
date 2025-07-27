@@ -21,3 +21,4 @@ def consultar_salud(consulta: Consulta):
     sim = cosine_similarity(user_vec, model['matrix']).flatten()
     idx = sim.argmax()
     return {"respuesta": model['answers'][idx]}
+

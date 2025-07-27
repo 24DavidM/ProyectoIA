@@ -96,9 +96,8 @@ section {
   padding: 1rem;
   display: flex;
   justify-content: center;
-  /* Definir una altura máxima fija para el contenedor para evitar que crezca demasiado */
-  max-height: 350px; /* o el tamaño que te convenga */
-  overflow: hidden; /* que no desborde si la imagen es más grande */
+  max-height: 350px;
+  overflow: hidden;
 }
 
 .imagenInicio img {
