@@ -1,3 +1,6 @@
+Despliegue sitio web: https://medicomdm.netlify.app/
+Despliegue chatbot: https://robdocdm.streamlit.app/
+
 # 🤖 RobDoc - ChatBot Médico
 
 **RobDoc** es un sistema interactivo de asistencia médica que responde preguntas frecuentes utilizando procesamiento de lenguaje natural (NLP), y cuenta con una interfaz web amigable y un botón flotante para integrarse a cualquier sitio. Este proyecto incluye:
